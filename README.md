@@ -2,7 +2,7 @@
 <div align="center">
     <p>
         <a href="https://www.maison-intelligence-artificielle.com">
-            <ing src="https://badgen.net/badge/MIA/MaisonIA06/blue?cache=86400&icon=https://www.maison-intelligence-artificielle.com">
+            <img src="https://badgen.net/badge/MIA/MaisonIA06/blue?cache=86400&icon=https://www.maison-intelligence-artificielle.com">
         </a>
     </p>
 </div>
