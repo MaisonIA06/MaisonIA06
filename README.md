@@ -46,3 +46,10 @@ Ce compte GitHub a pour objectifs :
 - Adresse : 1361 Route des Lucioles, 06410 Sophia Antipolis (Biot)
 - Téléphone : 04 22 21 50 42
 - Site officiel & actualités : [maison-intelligence-artificielle.com](https://www.maison-intelligence-artificielle.com)
+
+## Github Stats :
+
+<div align="center">
+    <img src="https://github-readme-stats.vercel.app/api?username=MaisonIA06&show_icons=true&theme=tokyonight&rank_icon=github">
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=MaisonIA06&theme=tokyonight&layout=compact">
+</div>
