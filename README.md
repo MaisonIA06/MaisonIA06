@@ -2,7 +2,19 @@
 <div align="center">
     <p>
         <a href="https://www.maison-intelligence-artificielle.com">
-            <img src="https://badgen.net/badge/MIA/MaisonIA06/blue?cache=86400&icon=https://www.maison-intelligence-artificielle.com">
+            <img src="https://badgen.net/badge/MIA/MaisonIA06/purple?icon=chrome">
+        </a>
+        <a href="https://www.linkedin.com/company/maison-de-l-intelligence-artificielle">
+            <img src="https://badgen.net/badge/LinkedIn/MaisonIA06/cyan?icon=chrome">
+        </a>
+        <a href="https://www.instagram.com/maison_ia06">
+            <img src="https://badgen.net/badge/Instagram/MaisonIA06/orange?icon=chrome">
+        </a>
+        <a href="https://www.facebook.com/MaisonAI">
+            <img src="https://badgen.net/badge/Facebook/MaisonIA06/blue?icon=chrome">
+        </a>
+        <a href="https://www.youtube.com/@maison_ia06">
+            <img src="https://badgen.net/badge/Youtube/MaisonIA06/red?icon=chrome">
         </a>
     </p>
 </div>
