@@ -16,6 +16,9 @@
         <a href="https://www.youtube.com/@maison_ia06">
             <img src="https://badgen.net/badge/Youtube/MaisonIA06/red?icon=chrome">
         </a>
+        <a href="https://www.x.com/maison_ia">
+            <img src="https://badgen.net/badge/X/MaisonIA06/black?icon=chrome">
+        </a>
     </p>
 </div>
 
