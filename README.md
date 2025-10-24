@@ -27,7 +27,7 @@
 
 # La Maison de l'Intelligence Artificielle (MIA)
 
-> Explorer, comprendre et co-construire l'avenir de l'IA - au service des citoyens, des acteurs publics et privés du territoire Côte d'Azur.
+> Explorer, comprendre et co-construire l'avenir de l'IA - au service des citoyens, des acteurs publics et privés du territoire des Alpes-Maritimes.
 
 ---
 
