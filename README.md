@@ -19,6 +19,9 @@
         <a href="https://www.x.com/maison_ia">
             <img src="https://badgen.net/badge/X/MaisonIA06/black?icon=chrome">
         </a>
+        <a href="https://www.tiktok.com/@maison_ia06">
+            <img src="https://badgen.net/badge/TikTok/MaisonIA06/pink?icon=chrom">
+        </a>
     </p>
 </div>
 
@@ -30,7 +33,7 @@
 
 ## Qui sommes-nous ?
 
-La **Maison de l'Intelligence Artificcielle (MIA)** est un lieu public dédié à l'IA, situé au coeur de la technopole de Sophia Antipolis (Alpes-Maritimes).
+La **Maison de l'Intelligence Artificielle (MIA)** est un lieu public dédié à l'IA, situé au coeur de la technopole de Sophia Antipolis (Alpes-Maritimes).
 Inaugurée en 202 sous l'impulsion du Département des Alpes-Maritimes, la MIA a pour ambition de rendre accessible, visible et opérationelle l'intelligence artificielle pour tous les publics du territoire.
 
 ---
@@ -39,12 +42,12 @@ Inaugurée en 202 sous l'impulsion du Département des Alpes-Maritimes, la MIA a
 
 Ce compte GitHub a pour objectifs :
 
-1. **Transparence des projets** - publier des codes, démonstrateurs, notebooks, prototypes développés dans le cadre de projets collaboratifs menés à la MIA.
+1. **Transparence des projets** - publier des codes, démonstrateurs, notebooks, prototypes développés dans le cadre de projets collaboratifs et d'ateliers créées par l'équipe de la MIA.
 2. **Partage avec la communauté** - favoriser l'open source, permettre aux chercheurs, étudiants et contributeurs d'interagir, forker, commenter ou proposer des amèliorations.
 
 ---
 
-## Contacte & localisation
+## Contact & localisation
 
 - Adresse : 1361 Route des Lucioles, 06410 Sophia Antipolis (Biot)
 - Téléphone : 04 22 21 50 42
