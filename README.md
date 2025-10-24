@@ -34,7 +34,7 @@
 ## Qui sommes-nous ?
 
 La **Maison de l'Intelligence Artificielle (MIA)** est un lieu public dédié à l'IA, situé au coeur de la plus grande technopole d'Europe (Sophia Antipolis).
-Inaugurée en 2020 sous l'impulsion du Département des Alpes-Maritimes, la MIA a pour ambition de rendre accessible, visible et opérationelle l'intelligence artificielle pour tous les publics du territoire.
+Inaugurée en 2020 sous l'impulsion du Département des Alpes-Maritimes, la MIA a pour ambition de rendre accessible, visible et opérationelle l'intelligence artificielle auprés de tous les publics du territoire.
 
 ---
 
