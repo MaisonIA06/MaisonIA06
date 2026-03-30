@@ -29,9 +29,9 @@
 
 ---
 
-# 🏛️ La Maison de l'IA (MIA)
+# 🏛️ La Maison de l'IA
 
-> **Explorer, comprendre et co-construire l'avenir de l'IA** — au service des citoyens, des acteurs publics et privés du territoire des Alpes-Maritimes.
+> **Un lieu pour comprendre et expérimenter l'Intelligence Artificielle** — ouvert à tous, au cœur de Sophia Antipolis.
 
 ---
 
@@ -39,9 +39,9 @@
 
 <div align="center">
 
-| 🎓 Sensibilisation | 👥 Public touché | 🏢 Showroom |
+| 🎯 Sensibilisation | 🏢 Espace | 📅 Depuis |
 |:---:|:---:|:---:|
-| **100%** des collèges des Alpes-Maritimes | **+15 000** professionnels acculturés en 2024 | **500m²** dédiés aux démonstrations |
+| **+130 000** personnes sensibilisées (grand public, scolaires, professionnels) | **1 000 m²** d'espace dédié à l'IA | **2020** au service du territoire |
 
 </div>
 
@@ -60,25 +60,23 @@
 
 ## 🏠 Qui sommes-nous ?
 
-La **Maison de l'IA (MIA)** est un lieu public dédié à l'IA, situé au cœur de la plus grande technopole d'Europe (Sophia Antipolis).
+La **Maison de l'IA** est un lieu public dédié à l'IA, situé au cœur de la plus grande technopole d'Europe (Sophia Antipolis).
 
-Inaugurée en 2020 sous l'impulsion du Département des Alpes-Maritimes, la MIA a pour ambition de rendre accessible, visible et opérationnelle l'intelligence artificielle auprès de tous les publics du territoire.
+Inaugurée en 2020 sous l'impulsion du Département des Alpes-Maritimes, La Maison de l'IA a pour ambition de rendre accessible, visible et opérationnelle l'intelligence artificielle auprès de tous les publics du territoire.
 
 ### 👥 Nos publics
 
-- **🎒 Scolaires** — Ateliers d'initiation pour les collégiens des Alpes-Maritimes
-- **👨‍👩‍👧‍👦 Grand public** — Showroom, démonstrations et événements
-- **💼 Professionnels** — Accompagnement à la transformation IA des entreprises
+- **Scolaires** — Ateliers d'initiation pour les collégiens des Alpes-Maritimes
+- **Grand public** — Showroom, démonstrations et événements
+- **Professionnels** — Accompagnement à la transformation IA des entreprises
 
 ---
 
-## 🗓️ Événement à venir : WAICF 2026
+## 🗓️ Événement à venir : WAIFF 2026
 
-🎪 **World Artificial Intelligence Cannes Festival**  
-📅 **12-13 février 2026**  
-📍 **Palais des Festivals, Cannes**
-
-> Rejoignez-nous pour explorer les dernières avancées en IA !
+🎬 **World IA Film Festival**  
+📅 **21-22 avril 2026**  
+📍 **Cannes**
 
 ---
 
@@ -86,7 +84,7 @@ Inaugurée en 2020 sous l'impulsion du Département des Alpes-Maritimes, la MIA 
 
 Ce compte GitHub a pour objectifs :
 
-1. **🔓 Transparence des projets** — Publier des codes, démonstrateurs, notebooks et prototypes développés dans le cadre de projets collaboratifs et d'ateliers créés par l'équipe de la MIA.
+1. **🔓 Transparence des projets** — Publier des codes, démonstrateurs, notebooks et prototypes développés dans le cadre de projets collaboratifs et d'ateliers créés par l'équipe de La Maison de l'IA.
 
 2. **🌐 Partage avec la communauté** — Favoriser l'open source, permettre aux chercheurs, étudiants et contributeurs d'interagir, forker, commenter ou proposer des améliorations.
 
@@ -103,12 +101,28 @@ Ce compte GitHub a pour objectifs :
 
 ---
 
-## 📈 GitHub Stats
+## 🚀 Technologies & domaines explorés
 
 <div align="center">
-    <img src="https://github-readme-stats.vercel.app/api?username=MaisonIA06&show_icons=true&theme=tokyonight&rank_icon=github" alt="GitHub Stats">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=MaisonIA06&theme=tokyonight&layout=compact" alt="Top Languages">
+
+![IA Générative](https://img.shields.io/badge/IA%20Générative-🤖-blueviolet?style=for-the-badge)
+![Vision par Ordinateur](https://img.shields.io/badge/Vision%20par%20Ordinateur-👁️-blue?style=for-the-badge)
+![Deep Learning](https://img.shields.io/badge/Deep%20Learning-🧠-orange?style=for-the-badge)
+![NLP](https://img.shields.io/badge/Traitement%20du%20Langage-💬-green?style=for-the-badge)
+![Éducation](https://img.shields.io/badge/Éducation%20au%20numérique-🎓-red?style=for-the-badge)
+![Éthique de l'IA](https://img.shields.io/badge/Éthique%20de%20l'IA-⚖️-yellow?style=for-the-badge)
+
 </div>
+
+---
+
+## 🛠️ Nos projets
+
+| Projet | Description | Langage |
+|--------|-------------|---------|
+| 🎮 **[Real_VS_AI](https://github.com/MaisonIA06/Real_VS_AI)** | Plateforme éducative et ludique pour développer l'esprit critique face aux contenus générés par l'IA | TypeScript |
+| 💬 **[Chatbot-Eternel](https://github.com/MaisonIA06/Chatbot-Eternel)** | Chatbot interactif simulant des dialogues fictifs entre grandes figures de l'Histoire et de la fiction | Python |
+| 🎭 **[DeepFake](https://github.com/MaisonIA06/DeepFake)** | Face Swap en temps réel via webcam — sensibilisation aux deepfakes | Python |
 
 ---
 
