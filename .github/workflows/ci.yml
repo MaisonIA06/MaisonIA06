@@ -1,0 +1,25 @@
+# CI : tests du générateur + génération à blanc des SVG (vérifie que le script tourne sur le runner).
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Installer les dépendances
+        run: pip install -r requirements-dev.txt
+      - name: Tests
+        run: python -m pytest -q tests
+      - name: Génération à blanc du héros
+        run: python .github/scripts/generate_hero.py --out /tmp/hero-check && ls -la /tmp/hero-check
