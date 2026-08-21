@@ -1,4 +1,4 @@
-"""Tests du générateur de héros SVG (étape 1)."""
+"""Tests du générateur de héros SVG (palette de la charte MIA)."""
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -12,87 +12,104 @@ sys.path.insert(0, str(ROOT / ".github" / "scripts"))
 
 import generate_hero as gh  # noqa: E402
 
+ICONS = ROOT / "assets" / "icons"
+
 
 @pytest.fixture
 def logo_png(tmp_path):
-    """Petit logo synthétique (disque blanc sur fond transparent)."""
-    img = Image.new("LA", (120, 80), (0, 0))
+    """Logo synthétique bicolore : disque blanc à gauche, disque terracotta à droite."""
+    img = Image.new("RGBA", (240, 100), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
-    d.ellipse((20, 10, 100, 70), fill=(255, 255))
+    d.ellipse((10, 10, 90, 90), fill=(255, 255, 255, 255))
+    d.ellipse((150, 10, 230, 90), fill=(174, 101, 87, 255))
     p = tmp_path / "logo.png"
     img.save(p)
     return p
 
 
-def test_load_mask_keeps_aspect_and_is_boolean(logo_png):
-    mask = gh.load_mask(logo_png, gh.GRID_W, gh.GRID_H)
-    assert mask.dtype == bool
-    assert mask.shape == (gh.GRID_H, gh.GRID_W)
-    # le logo est centré : présence de pixels au milieu, aucun dans les coins
-    assert mask[gh.GRID_H // 2, gh.GRID_W // 2]
+def test_palette_is_the_official_charte():
+    dark, light = gh.THEMES["dark"], gh.THEMES["light"]
+    assert dark["BG"].upper() == gh.DEEP_BLUE == "#163458"
+    assert dark["DOT2"].upper() == gh.TERRA == "#AE6557"
+    assert light["TEXT"].upper() == gh.DEEP_BLUE
+    for th in (dark, light):
+        for k, v in th.items():
+            if v.startswith("#"):
+                assert v.upper() in gh.CHARTE_COLORS, (k, v)  # aucune couleur hors charte
+
+
+def test_load_logo_returns_alpha_and_color_classes(logo_png):
+    alpha, klass = gh.load_logo(logo_png, gh.GRID_W, gh.GRID_H)
+    assert alpha.shape == klass.shape == (gh.GRID_H, gh.GRID_W)
+    mask = alpha > 0.5
+    # classe 0 (couleur principale) à gauche, classe 1 (terracotta) à droite
+    left = klass[mask & (np.arange(gh.GRID_W)[None, :] < gh.GRID_W // 2)]
+    right = klass[mask & (np.arange(gh.GRID_W)[None, :] >= gh.GRID_W // 2)]
+    assert (left == 0).all() and (right == 1).all()
     assert not mask[0, 0] and not mask[-1, -1]
 
 
-def test_sample_points_all_inside_mask(logo_png):
-    mask = gh.load_mask(logo_png, gh.GRID_W, gh.GRID_H)
-    pts = gh.sample_points(mask, 300, seed=1)
-    assert pts.shape == (300, 2)
-    ys, xs = pts[:, 1], pts[:, 0]
-    assert mask[ys, xs].all()
+def test_sample_points_inside_mask_and_deterministic(logo_png):
+    alpha, _ = gh.load_logo(logo_png, gh.GRID_W, gh.GRID_H)
+    mask = alpha > 0.5
+    a = gh.sample_points(mask, 300, seed=1)
+    b = gh.sample_points(mask, 300, seed=1)
+    assert a.shape == (300, 2) and np.array_equal(a, b)
+    assert mask[a[:, 1], a[:, 0]].all()
 
 
-def test_sample_points_is_deterministic(logo_png):
-    mask = gh.load_mask(logo_png, gh.GRID_W, gh.GRID_H)
-    a = gh.sample_points(mask, 50, seed=7)
-    b = gh.sample_points(mask, 50, seed=7)
-    assert np.array_equal(a, b)
+def test_icon_masks_are_outlines_not_blobs():
+    for name in ("sensibiliser", "federer", "valoriser", "inspirer", "robotique"):
+        m = gh.icon_mask(ICONS / f"{name}.png")
+        assert m.shape == (gh.GRID_H, gh.GRID_W)
+        assert 0.01 < m.mean() < 0.35, (name, m.mean())
 
 
-def test_shape_masks_have_same_grid_and_are_non_empty(logo_png):
-    shapes = gh.build_shapes(logo_png)
-    assert len(shapes) >= 3
-    for name, m in shapes:
-        assert m.shape == (gh.GRID_H, gh.GRID_W), name
-        assert m.sum() > 200, name
+def test_text_mask_is_a_shape():
+    m = gh.text_mask("06")
+    assert 0.03 < m.mean() < 0.45
+    assert not m[0, 0] and not m[-1, -1]
+
+
+def test_build_shapes_starts_with_logo_and_includes_missions(logo_png):
+    shapes = gh.build_shapes(logo_png, ICONS)
+    names = [n for n, _ in shapes]
+    assert names[0] == "logo"
+    for n in ("sensibiliser", "federer", "valoriser", "inspirer"):
+        assert n in names
+    for _, m in shapes:
+        assert m.shape == (gh.GRID_H, gh.GRID_W) and m.sum() > 200
 
 
 def test_dotted_leader_fills_columns():
     line = gh.leader("Subject", "Maison de l'IA", cols=60)
-    assert len(line) == 60
+    assert len(line) == 60 and "....." in line
     assert line.startswith("Subject ") and line.endswith(" Maison de l'IA")
-    assert "....." in line
 
 
-def test_build_svg_is_valid_xml_and_contains_expected_blocks(logo_png):
-    svg = gh.build_svg(logo_png, theme="dark", n_particles=120)
-    root = ET.fromstring(svg)  # XML bien formé
-    assert root.tag.endswith("svg")
-    assert 'viewBox="0 0 1180 610"' in svg
-    for token in ("VISUAL.MAP", "SYSTEM.INFO", "Subject", "Origin", "Status", "MaisonIA06"):
+def test_build_svg_valid_xml_with_pattern_and_blocks(logo_png):
+    svg = gh.build_svg(logo_png, ICONS, theme="dark", n_particles=120)
+    root = ET.fromstring(svg)
+    assert root.tag.endswith("svg") and 'viewBox="0 0 1180 610"' in svg
+    for token in ("VISUAL.MAP", "SYSTEM.INFO", "Subject", "Origin", "Status", "MaisonIA06", 'id="iaPattern"'):
         assert token in svg, token
-    # animations SMIL présentes (trame + particules + curseur)
     assert svg.count("<animateTransform") >= 120
-    assert "repeatCount=\"indefinite\"" in svg
+    assert 'href="#pA"' in svg and 'href="#pB"' in svg  # particules bicolores
+    assert "#7C3AED" not in svg.upper() and "#22D3EE" not in svg.upper()  # plus de violet/cyan
 
 
 def test_light_theme_uses_light_palette(logo_png):
-    dark = gh.build_svg(logo_png, theme="dark", n_particles=20)
-    light = gh.build_svg(logo_png, theme="light", n_particles=20)
-    assert gh.THEMES["dark"]["BG"] in dark and gh.THEMES["dark"]["BG"] not in light
-    assert gh.THEMES["light"]["BG"] in light
+    dark = gh.build_svg(logo_png, ICONS, theme="dark", n_particles=20)
+    light = gh.build_svg(logo_png, ICONS, theme="light", n_particles=20)
+    assert gh.THEMES["dark"]["BG"] in dark and gh.THEMES["light"]["BG"] in light
+    # les teintes sombres du panneau n'apparaissent pas en clair (le Deep Blue y sert de texte)
+    assert gh.THEMES["dark"]["PANEL"] not in light and gh.THEMES["dark"]["PANEL2"] not in light
 
 
 def test_main_writes_both_files(tmp_path, logo_png):
-    out = gh.main(["--logo", str(logo_png), "--out", str(tmp_path), "--particles", "30"])
-    assert out == 0
+    rc = gh.main(["--logo-dark", str(logo_png), "--logo-light", str(logo_png),
+                  "--icons", str(ICONS), "--out", str(tmp_path), "--particles", "30"])
+    assert rc == 0
     for name in ("hero-dark.svg", "hero-light.svg"):
         p = tmp_path / name
         assert p.exists() and p.stat().st_size > 1000
-
-
-def test_drawn_masks_are_shapes_not_full_rectangles():
-    """Les masques dessinés (texte, réseau) ne doivent pas remplir toute la grille."""
-    for name, mask in (("IA", gh.text_mask("IA")), ("neural", gh.neural_mask()), ("06", gh.text_mask("06"))):
-        fill = mask.mean()
-        assert 0.03 < fill < 0.45, (name, fill)
-        assert not mask[0, 0] and not mask[-1, -1], name
