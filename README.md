@@ -48,8 +48,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=MaisonIA06&mode=daily&hide_border=true&background=163458&stroke=98A8C6&ring=AE6557&fire=F2B2A5&currStreakLabel=C2D4EF&sideLabels=98A8C6&currStreakNum=FFFFFF&sideNums=FFFFFF&dates=98A8C6&card_width=1180&date_format=j%20M%5B%20Y%5D">
-  <img alt="Série de contributions" src="https://streak-stats.demolab.com?user=MaisonIA06&mode=daily&hide_border=true&background=FFFFFF&stroke=C2D4EF&ring=AE6557&fire=994845&currStreakLabel=994845&sideLabels=163458&currStreakNum=163458&sideNums=163458&dates=98A8C6&card_width=1180&date_format=j%20M%5B%20Y%5D" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=MaisonIA06&bg_color=163458&color=C2D4EF&title_color=C2D4EF&line=AE6557&point=F2B2A5&area=true&area_color=AE6557&hide_border=true&custom_title=Activit%C3%A9%20%C2%B7%2031%20derniers%20jours">
+  <img alt="Graphe d'activité" src="https://github-readme-activity-graph.vercel.app/graph?username=MaisonIA06&bg_color=FFFFFF&color=163458&title_color=994845&line=AE6557&point=163458&area=true&area_color=F2B2A5&hide_border=true&custom_title=Activit%C3%A9%20%C2%B7%2031%20derniers%20jours" width="100%">
 </picture>
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats-one-bice.vercel.app/api?username=MaisonIA06&show_icons=true&include_all_commits=true&count_private=true&hide_rank=true&hide_border=true&bg_color=163458&title_color=C2D4EF&icon_color=AE6557&text_color=98A8C6&card_width=500&custom_title=Stats%20GitHub%20%C2%B7%20MaisonIA06">
