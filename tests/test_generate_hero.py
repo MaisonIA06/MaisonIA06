@@ -66,19 +66,19 @@ def test_icon_masks_are_outlines_not_blobs():
 
 
 def test_text_mask_is_a_shape():
-    m = gh.text_mask("06")
+    m = gh.text_mask("IA")
     assert 0.03 < m.mean() < 0.45
     assert not m[0, 0] and not m[-1, -1]
 
 
-def test_build_shapes_starts_with_logo_and_includes_missions(logo_png):
-    shapes = gh.build_shapes(logo_png, ICONS)
-    names = [n for n, _ in shapes]
-    assert names[0] == "logo"
-    for n in ("sensibiliser", "federer", "valoriser", "inspirer"):
-        assert n in names
-    for _, m in shapes:
-        assert m.shape == (gh.GRID_H, gh.GRID_W) and m.sum() > 200
+LOGOS = ROOT / "assets" / "logo"
+
+
+def test_build_shapes_sequence_logo_dept_ia_papillon(logo_png):
+    shapes = gh.build_shapes(logo_png, LOGOS / "dept-06.png", ICONS)
+    assert [n for n, _ in shapes] == ["logo", "departement", "ia", "inspirer"]
+    for name, m in shapes:
+        assert m.shape == (gh.GRID_H, gh.GRID_W) and m.sum() > 200, name
 
 
 def test_dotted_leader_fills_columns():
@@ -88,7 +88,7 @@ def test_dotted_leader_fills_columns():
 
 
 def test_build_svg_valid_xml_with_pattern_and_blocks(logo_png):
-    svg = gh.build_svg(logo_png, ICONS, theme="dark", n_particles=120)
+    svg = gh.build_svg(logo_png, logo_png, LOGOS / "dept-06.png", ICONS, theme="dark", n_particles=120)
     root = ET.fromstring(svg)
     assert root.tag.endswith("svg") and 'viewBox="0 0 1180 610"' in svg
     for token in ("VISUAL.MAP", "SYSTEM.INFO", "Subject", "Origin", "Status", "MaisonIA06", 'id="iaPattern"'):
@@ -99,8 +99,8 @@ def test_build_svg_valid_xml_with_pattern_and_blocks(logo_png):
 
 
 def test_light_theme_uses_light_palette(logo_png):
-    dark = gh.build_svg(logo_png, ICONS, theme="dark", n_particles=20)
-    light = gh.build_svg(logo_png, ICONS, theme="light", n_particles=20)
+    dark = gh.build_svg(logo_png, logo_png, LOGOS / "dept-06.png", ICONS, theme="dark", n_particles=20)
+    light = gh.build_svg(logo_png, logo_png, LOGOS / "dept-06.png", ICONS, theme="light", n_particles=20)
     assert gh.THEMES["dark"]["BG"] in dark and gh.THEMES["light"]["BG"] in light
     # les teintes sombres du panneau n'apparaissent pas en clair (le Deep Blue y sert de texte)
     assert gh.THEMES["dark"]["PANEL"] not in light and gh.THEMES["dark"]["PANEL2"] not in light
@@ -108,8 +108,22 @@ def test_light_theme_uses_light_palette(logo_png):
 
 def test_main_writes_both_files(tmp_path, logo_png):
     rc = gh.main(["--logo-dark", str(logo_png), "--logo-light", str(logo_png),
+                  "--mark-dark", str(logo_png), "--mark-light", str(logo_png),
+                  "--dept", str(LOGOS / "dept-06.png"),
                   "--icons", str(ICONS), "--out", str(tmp_path), "--particles", "30"])
     assert rc == 0
     for name in ("hero-dark.svg", "hero-light.svg"):
         p = tmp_path / name
         assert p.exists() and p.stat().st_size > 1000
+
+
+def test_logo_points_boost_outline_class(logo_png):
+    """Le M (contour, classe 0) reçoit ~45 % des particules pour rester lisible."""
+    alpha, klass = gh.load_logo(logo_png, gh.GRID_W, gh.GRID_H)
+    pts, kl = gh.logo_points(alpha > 0.5, klass, 400, seed=3)
+    assert pts.shape == (400, 2) and kl.shape == (400,)
+    share0 = (kl == 0).mean()
+    assert 0.40 <= share0 <= 0.55
+    # cohérence position/classe
+    for (x, y), k in zip(pts[:20], kl[:20]):
+        assert klass[y, x] == k

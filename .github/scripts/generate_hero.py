@@ -68,7 +68,7 @@ FONT = "ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace"
 T_SWITCH = 3.2                             # trame → particules
 HOLD, MORPH = 2.2, 1.1                     # durées par forme (s)
 SEED = 6
-MISSION_ICONS = ["sensibiliser", "federer", "valoriser", "inspirer", "robotique"]
+PAPILLON = "inspirer"                      # 4e forme du morphing : « Inspirer » (papillon)
 
 FONT_CANDIDATES = [
     "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
@@ -141,8 +141,8 @@ def load_logo(path, gw: int = GRID_W, gh: int = GRID_H):
     return _alpha_of(canvas), klass
 
 
-def icon_mask(path, gw: int = GRID_W, gh: int = GRID_H) -> np.ndarray:
-    return _alpha_of(_fit_image(Image.open(path), gw, gh, margin=0.12)) > 0.5
+def icon_mask(path, gw: int = GRID_W, gh: int = GRID_H, margin: float = 0.12) -> np.ndarray:
+    return _alpha_of(_fit_image(Image.open(path), gw, gh, margin=margin)) > 0.5
 
 
 def _font(size: int):
@@ -159,17 +159,16 @@ def text_mask(text: str, gw: int = GRID_W, gh: int = GRID_H) -> np.ndarray:
     return _alpha_of(_fit_image(big, gw, gh, margin=0.10)) > 0.5
 
 
-def build_shapes(logo_path, icons_dir):
-    """Formes successives du morphing : (nom, masque booléen)."""
-    alpha, _ = load_logo(logo_path)
-    shapes = [("logo", alpha > 0.5)]
-    icons_dir = Path(icons_dir)
-    for name in MISSION_ICONS:
-        p = icons_dir / f"{name}.png"
-        if p.exists():
-            shapes.append((name, icon_mask(p)))
-    shapes.append(("06", text_mask("06")))
-    return shapes
+def build_shapes(mark_path, dept_path, icons_dir):
+    """Formes successives du morphing : logo M/A (marque seule) → sceau du Département 06
+    → « IA » (Pogonia) → papillon « Inspirer »."""
+    alpha, _ = load_logo(mark_path)
+    return [
+        ("logo", alpha > 0.5),
+        ("departement", icon_mask(dept_path, margin=0.10)),
+        ("ia", text_mask("IA")),
+        ("inspirer", icon_mask(Path(icons_dir) / f"{PAPILLON}.png")),
+    ]
 
 
 # ──────────────────────────────── particules ────────────────────────────
@@ -181,6 +180,23 @@ def sample_points(mask: np.ndarray, n: int, seed: int = SEED) -> np.ndarray:
     pts = np.stack([xs[idx], ys[idx]], axis=1)
     order = np.lexsort((pts[:, 0], pts[:, 1] // 12))      # bandes horizontales → trajectoires cohérentes
     return pts[order]
+
+
+def logo_points(mask: np.ndarray, klass: np.ndarray, n: int, seed: int = SEED):
+    """Points du logo avec ré-équilibrage : la classe 0 (M en contour, moins dense)
+    reçoit ~45 % des particules pour rester lisible face au « IA » plein.
+    Retourne (points, classes)."""
+    n0 = int(n * 0.45)
+    m0, m1 = mask & (klass == 0), mask & (klass == 1)
+    if not m0.any() or not m1.any():          # logo monochrome : échantillonnage uniforme
+        pts = sample_points(mask, n, seed)
+        return pts, klass[pts[:, 1], pts[:, 0]]
+    p0 = sample_points(m0, n0, seed)
+    p1 = sample_points(m1, n - n0, seed + 101)
+    pts = np.concatenate([p0, p1])
+    kl = np.concatenate([np.zeros(len(p0), dtype=np.int8), np.ones(len(p1), dtype=np.int8)])
+    order = np.lexsort((pts[:, 0], pts[:, 1] // 12))
+    return pts[order], kl[order]
 
 
 def _timeline(n_shapes: int):
@@ -197,24 +213,23 @@ def _timeline(n_shapes: int):
 def particles_svg(shapes, klass: np.ndarray, n: int, th: dict, seed: int = SEED) -> str:
     """Particules bicolores (couleur héritée du pixel du logo), un seul <set> sur le groupe
     et interpolation linéaire : indispensable pour que le navigateur tienne la cadence."""
-    sets = [sample_points(m, n, seed + i) for i, (_, m) in enumerate(shapes)]
+    logo_pts, logo_kl = logo_points(shapes[0][1], klass, n, seed)
+    sets = [logo_pts] + [sample_points(m, n, seed + i) for i, (_, m) in enumerate(shapes[1:], start=1)]
     total, times = _timeline(len(shapes))
     kt = ";".join(f"{t:.3f}" for t in times)
     out = [
-        f'<defs><rect id="pA" width="0.95" height="0.75" fill="{th["DOT"]}"/>'
-        f'<rect id="pB" width="0.95" height="0.75" fill="{th["DOT2"]}"/></defs>',
+        f'<defs><rect id="pA" width="1.2" height="0.95" fill="{th["DOT"]}"/>'
+        f'<rect id="pB" width="1.2" height="0.95" fill="{th["DOT2"]}"/></defs>',
         f'<g opacity="0" transform="translate({PX + 4},{PY + 4}) scale({CELL})">',
         f'<set attributeName="opacity" to="1" begin="{T_SWITCH}s"/>',
     ]
-    logo_pts = sets[0]
     for i in range(n):
         pos = [f"{s[i][0]} {s[i][1]}" for s in sets]
         vals = []
         for p in pos:
             vals += [p, p]               # maintien puis départ du morph
         vals.append(pos[0])              # retour à la première forme
-        x0, y0 = logo_pts[i]
-        ref = "pB" if klass[y0, x0] else "pA"
+        ref = "pB" if logo_kl[i] else "pA"
         out.append(
             f'<use href="#{ref}"><animateTransform attributeName="transform" type="translate" '
             f'values="{";".join(vals)}" keyTimes="{kt}" '
@@ -332,10 +347,12 @@ def info_svg(th: dict) -> str:
 
 
 # ──────────────────────────────── assemblage ────────────────────────────
-def build_svg(logo_path, icons_dir, theme: str = "dark", n_particles: int = 1100) -> str:
+def build_svg(logo_path, mark_path, dept_path, icons_dir, theme: str = "dark", n_particles: int = 750) -> str:
+    """logo_path : logo complet (trame) ; mark_path : marque M/A seule (particules)."""
     th = THEMES[theme]
     alpha, klass = load_logo(logo_path)
-    shapes = build_shapes(logo_path, icons_dir)
+    shapes = build_shapes(mark_path, dept_path, icons_dir)
+    _, mark_klass = load_logo(mark_path)
     s = []
     a = s.append
     a(f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" '
@@ -369,7 +386,7 @@ def build_svg(logo_path, icons_dir, theme: str = "dark", n_particles: int = 1100
     a(f'<rect x="{PX}" y="{PY}" width="{PW}" height="{PH}" rx="10" fill="url(#iaPattern)" mask="url(#patternMask)"/>')
     a('<g clip-path="url(#panelClip)">')
     a(halftone_svg(alpha, klass, th))
-    a(particles_svg(shapes, klass, n_particles, th))
+    a(particles_svg(shapes, mark_klass, n_particles, th))
     a(f'<rect x="{PX}" y="{PY}" width="{PW}" height="2" fill="{th["ACCENT2"]}" opacity="0.35">'
       f'<animateTransform attributeName="transform" type="translate" values="0 -4;0 {PH + 4}" dur="5s" repeatCount="indefinite"/></rect>')
     a('</g>')
@@ -390,16 +407,20 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--logo-dark", default="assets/logo/mia-logo-dark.png")
     ap.add_argument("--logo-light", default="assets/logo/mia-logo-light.png")
+    ap.add_argument("--mark-dark", default="assets/logo/mia-mark-dark.png")
+    ap.add_argument("--mark-light", default="assets/logo/mia-mark-light.png")
+    ap.add_argument("--dept", default="assets/logo/dept-06.png")
     ap.add_argument("--icons", default="assets/icons")
     ap.add_argument("--font", default=None, help="police .ttf/.otf pour la forme « 06 » (ex. Pogonia-Black)")
     ap.add_argument("--out", default="assets")
-    ap.add_argument("--particles", type=int, default=1100)
+    ap.add_argument("--particles", type=int, default=750)
     args = ap.parse_args(argv)
     _FONT_PATH = args.font
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    for theme, logo in (("dark", args.logo_dark), ("light", args.logo_light)):
-        svg = build_svg(logo, args.icons, theme, args.particles)
+    for theme, logo, mark in (("dark", args.logo_dark, args.mark_dark),
+                              ("light", args.logo_light, args.mark_light)):
+        svg = build_svg(logo, mark, args.dept, args.icons, theme, args.particles)
         p = out / f"hero-{theme}.svg"
         p.write_text(svg, encoding="utf-8")
         print(f"écrit {p} ({len(svg) // 1024} Ko)")

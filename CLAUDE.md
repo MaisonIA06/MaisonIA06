@@ -30,11 +30,13 @@ reste monospace système.
 
 - `README.md` — le profil (images SVG générées + widgets externes).
 - `assets/hero-dark.svg`, `assets/hero-light.svg` — héros animé (fenêtre terminal :
-  `VISUAL.MAP` logo tramé bicolore → particules (couleur héritée du pixel du logo) morphant
-  logo → icônes Sensibiliser / Fédérer / Valoriser / Inspirer / Robotique → « 06 » ;
-  pattern I/A de la charte en fond ; `SYSTEM.INFO` clé····valeur). **Générés, ne pas éditer.**
-- `assets/logo/mia-logo-dark.png` (M blanc + IA terracotta), `mia-logo-light.png` (couleur) —
-  sources des masques ; `assets/icons/*.png` — icônes officielles (version blanche, 420 px).
+  `VISUAL.MAP` logo complet tramé bicolore → particules (couleur héritée du pixel du logo,
+  M rééquilibré à ~45 % des points via `logo_points`) morphant marque M/A seule → sceau du
+  Département 06 → « IA » (Pogonia) → papillon « Inspirer » ; pattern I/A de la charte en
+  fond ; `SYSTEM.INFO` clé····valeur). **Générés, ne pas éditer.**
+- `assets/logo/` : `mia-logo-*` (logo complet, trame), `mia-mark-*` (marque M/A seule,
+  particules), `dept-06.png` (emblème du sceau départemental, nettoyé du texte circulaire) ;
+  `assets/icons/*.png` — icônes officielles (version blanche, 420 px).
 - `.github/scripts/generate_hero.py` — générateur (palette `THEMES`, lignes `INFO_LINES`,
   formes `MISSION_ICONS`/`build_shapes`, pattern `ia_pattern_def`).
 - `tests/` — tests pytest du générateur.
@@ -59,7 +61,8 @@ Prévisualiser un SVG **en document** (`http://127.0.0.1:8765/hero-dark.svg` via
 - Pas de CSS/JS : tout effet = SVG (SMIL) servi via `raw.githubusercontent.com`,
   ou widgets externes (streak-stats, github-readme-stats, snake).
 - Blocs ```` ```ansi ```` non colorés par GitHub → utiliser ```` ```diff ```` pour la couleur.
-- Garder le nombre d'animations SMIL par SVG raisonnable (≈1 000 particules, un seul
-  `<set>` au niveau du groupe, interpolation linéaire) sinon le rendu gèle.
+- Garder le nombre d'animations SMIL par SVG raisonnable (**750 particules** par défaut,
+  un seul `<set>` au niveau du groupe, interpolation linéaire) : au-delà, le rendu sature
+  le CPU sur machine modeste (constaté avec Brave/CDP le 2026-08-24).
 - `github-readme-stats.vercel.app` (officiel) est parfois en pause → miroir
   `github-readme-stats-eight-theta.vercel.app` (vérifié le 2026-08-21).
