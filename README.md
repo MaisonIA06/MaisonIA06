@@ -1,133 +1,78 @@
-![WAICF 2026 - Terre d'IA](https://github.com/MaisonIA06/MaisonIA06/blob/main/Bandeau_Kit_Com_WAICF_20262.png)
+<!-- ══════════════════════════════════════════════════════════════════════
+     MaisonIA06 — README de profil « System UI / terminal »
+     100 % charte graphique MIA (2026) : Deep Blue #163458 · Terra d'IA
+     #AE6557 · Auria #F2B2A5 · Bleu Quantique #98A8C6 · Bleu Lumen #C2D4EF
+     · Data Bloom #E5EAA8 · Rouge Lovelace #994845
+     Héros : assets/hero-*.svg (générés — .github/scripts/generate_hero.py)
+     Projets : branche `projects` (workflow projects.yml + projects.json)
+     ══════════════════════════════════════════════════════════════════════ -->
 
-<div align="center">
-    <h3>🤖 Un espace public entièrement consacré à l'IA et ses applications</h3>
-    <p>
-        <a href="https://www.maison-intelligence-artificielle.com">
-            <img src="https://badgen.net/badge/🏠%20Site%20Officiel/MIA/purple">
-        </a>
-        <a href="https://www.linkedin.com/company/maison-de-l-intelligence-artificielle">
-            <img src="https://badgen.net/badge/LinkedIn/MaisonIA06/0077B5">
-        </a>
-        <a href="https://www.instagram.com/maison_ia06">
-            <img src="https://badgen.net/badge/Instagram/maison__ia06/E4405F">
-        </a>
-        <a href="https://www.facebook.com/MaisonAI">
-            <img src="https://badgen.net/badge/Facebook/MaisonAI/1877F2">
-        </a>
-        <a href="https://www.youtube.com/@maison_ia06">
-            <img src="https://badgen.net/badge/Youtube/maison__ia06/FF0000">
-        </a>
-        <a href="https://www.x.com/maison_ia">
-            <img src="https://badgen.net/badge/X/maison__ia/000000">
-        </a>
-        <a href="https://www.tiktok.com/@maison_ia06">
-            <img src="https://badgen.net/badge/TikTok/maison__ia06/FF0050">
-        </a>
-    </p>
-</div>
+<!-- ═══ HÉROS · VISUAL.MAP + SYSTEM.INFO (animé, thème auto) ═══ -->
 
----
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/MaisonIA06/MaisonIA06/main/assets/hero-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/MaisonIA06/MaisonIA06/main/assets/hero-light.svg">
+  <img alt="Maison de l'Intelligence Artificielle — profile.sh --live" src="https://raw.githubusercontent.com/MaisonIA06/MaisonIA06/main/assets/hero-dark.svg" width="100%">
+</picture>
 
-# 🏛️ La Maison de l'IA
-
-> **Un lieu pour comprendre et expérimenter l'Intelligence Artificielle** — ouvert à tous, au cœur de Sophia Antipolis.
-
----
-
-## 📊 Chiffres clés
+<!-- ═══ TELEMETRY · série de contributions (pleine largeur) ═══ -->
 
 <div align="center">
 
-| 🎯 Sensibilisation | 🏢 Espace | 📅 Depuis |
-|:---:|:---:|:---:|
-| **+130 000** personnes sensibilisées (grand public, scolaires, professionnels) | **1 000 m²** d'espace dédié à l'IA | **2020** au service du territoire |
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=MaisonIA06&hide_border=true&background=163458&stroke=98A8C6&ring=AE6557&fire=F2B2A5&currStreakLabel=C2D4EF&sideLabels=98A8C6&currStreakNum=FFFFFF&sideNums=FFFFFF&dates=98A8C6&card_width=1180&date_format=j%20M%5B%20Y%5D">
+  <img alt="Série de contributions" src="https://streak-stats.demolab.com?user=MaisonIA06&hide_border=true&background=FFFFFF&stroke=C2D4EF&ring=AE6557&fire=994845&currStreakLabel=994845&sideLabels=163458&currStreakNum=163458&sideNums=163458&dates=98A8C6&card_width=1180&date_format=j%20M%5B%20Y%5D" width="100%">
+</picture>
+
+<!-- ═══ Stats + langages (côte à côte) ═══ -->
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats-one-bice.vercel.app/api?username=MaisonIA06&show_icons=true&include_all_commits=true&count_private=true&hide_rank=true&hide_border=true&bg_color=163458&title_color=C2D4EF&icon_color=AE6557&text_color=98A8C6&card_width=500&custom_title=Stats%20GitHub%20%C2%B7%20MaisonIA06">
+  <img alt="Stats GitHub" src="https://github-readme-stats-one-bice.vercel.app/api?username=MaisonIA06&show_icons=true&include_all_commits=true&count_private=true&hide_rank=true&hide_border=true&bg_color=FFFFFF&title_color=994845&icon_color=AE6557&text_color=163458&card_width=500&custom_title=Stats%20GitHub%20%C2%B7%20MaisonIA06" width="49%">
+</picture>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=MaisonIA06&layout=compact&langs_count=8&hide_border=true&bg_color=163458&title_color=C2D4EF&text_color=98A8C6&card_width=500&custom_title=Langages%20principaux">
+  <img alt="Langages principaux" src="https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=MaisonIA06&layout=compact&langs_count=8&hide_border=true&bg_color=FFFFFF&title_color=994845&text_color=163458&card_width=500&custom_title=Langages%20principaux" width="49%">
+</picture>
 
 </div>
 
----
-
-## 🎯 Nos 4 missions
-
-| Mission | Description |
-|---------|-------------|
-| **🌱 Sensibiliser** | Accompagner les Maralpins à vivre avec l'IA, comprendre ses usages |
-| **🤝 Fédérer** | Offrir un lieu de synergie pour l'écosystème IA Côte d'Azur |
-| **⭐ Valoriser** | Mettre en lumière les talents et encourager les carrières dans l'IA |
-| **💡 Inspirer** | Porter la vision d'une Cité de l'Intelligence Artificielle |
-
----
-
-## 🏠 Qui sommes-nous ?
-
-La **Maison de l'IA** est un lieu public dédié à l'IA, situé au cœur de la plus grande technopole d'Europe (Sophia Antipolis).
-
-Inaugurée en 2020 sous l'impulsion du Département des Alpes-Maritimes, La Maison de l'IA a pour ambition de rendre accessible, visible et opérationnelle l'intelligence artificielle auprès de tous les publics du territoire.
-
-### 👥 Nos publics
-
-- **Scolaires** — Ateliers d'initiation pour les collégiens des Alpes-Maritimes
-- **Grand public** — Showroom, démonstrations et événements
-- **Professionnels** — Accompagnement à la transformation IA des entreprises
-
----
-
-## 🗓️ Événement à venir : WAIFF 2026
-
-🎬 **World IA Film Festival**  
-📅 **21-22 avril 2026**  
-📍 **Cannes**
-
----
-
-## 💻 Pourquoi ce GitHub ?
-
-Ce compte GitHub a pour objectifs :
-
-1. **🔓 Transparence des projets** — Publier des codes, démonstrateurs, notebooks et prototypes développés dans le cadre de projets collaboratifs et d'ateliers créés par l'équipe de La Maison de l'IA.
-
-2. **🌐 Partage avec la communauté** — Favoriser l'open source, permettre aux chercheurs, étudiants et contributeurs d'interagir, forker, commenter ou proposer des améliorations.
-
----
-
-## 📍 Contact & localisation
-
-| | |
-|---|---|
-| 📍 **Adresse** | Pôle Alpha, Rue Pierre Laffitte, 06410 Biot |
-| 📞 **Téléphone** | 04 22 21 50 42 |
-| 🌐 **Site officiel** | [maison-intelligence-artificielle.com](https://www.maison-intelligence-artificielle.com) |
-| 📅 **Visites** | Sur rendez-vous uniquement — [Nous contacter](https://www.maison-intelligence-artificielle.com/contact/) |
-
----
-
-## 🚀 Technologies & domaines explorés
+<!-- ═══ PROJECTS.LIST · cartes générées (branche projects, maj quotidienne) ═══ -->
 
 <div align="center">
 
-![IA Générative](https://img.shields.io/badge/IA%20Générative-🤖-blueviolet?style=for-the-badge)
-![Vision par Ordinateur](https://img.shields.io/badge/Vision%20par%20Ordinateur-👁️-blue?style=for-the-badge)
-![Deep Learning](https://img.shields.io/badge/Deep%20Learning-🧠-orange?style=for-the-badge)
-![NLP](https://img.shields.io/badge/Traitement%20du%20Langage-💬-green?style=for-the-badge)
-![Éducation](https://img.shields.io/badge/Éducation%20au%20numérique-🎓-red?style=for-the-badge)
-![Éthique de l'IA](https://img.shields.io/badge/Éthique%20de%20l'IA-⚖️-yellow?style=for-the-badge)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/MaisonIA06/MaisonIA06/projects/projects.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/MaisonIA06/MaisonIA06/projects/projects-light.svg">
+  <img alt="Projets de la Maison de l'IA" src="https://raw.githubusercontent.com/MaisonIA06/MaisonIA06/projects/projects.svg" width="100%">
+</picture>
 
 </div>
 
----
+> **Pourquoi ce GitHub ?** Publier les codes, démonstrateurs et prototypes issus des
+> ateliers et projets collaboratifs de l'équipe — et permettre aux chercheurs, étudiants
+> et curieux de forker, commenter, proposer.
 
-## 🛠️ Nos projets
-
-| Projet | Description | Langage |
-|--------|-------------|---------|
-| 🎮 **[Real_VS_AI](https://github.com/MaisonIA06/Real_VS_AI)** | Plateforme éducative et ludique pour développer l'esprit critique face aux contenus générés par l'IA | TypeScript |
-| 💬 **[Chatbot-Eternel](https://github.com/MaisonIA06/Chatbot-Eternel)** | Chatbot interactif simulant des dialogues fictifs entre grandes figures de l'Histoire et de la fiction | Python |
-| 🎭 **[DeepFake](https://github.com/MaisonIA06/DeepFake)** | Face Swap en temps réel via webcam — sensibilisation aux deepfakes | Python |
-
----
+<!-- ═══ UPLINK · réseaux (badges aux couleurs de la charte) ═══ -->
 
 <div align="center">
-    <sub>🏛️ <strong>Maison de l'IA</strong> — Département des Alpes-Maritimes</sub>
-    <br>
-    <sub><em>« Seul, on va plus vite mais ensemble, on va plus loin. »</em></sub>
+
+<a href="https://www.maison-intelligence-artificielle.com"><img src="https://img.shields.io/badge/SITE_OFFICIEL-maison--intelligence--artificielle.com-AE6557?style=for-the-badge&labelColor=163458&logo=googlechrome&logoColor=C2D4EF" alt="Site officiel"></a>&nbsp;
+<a href="https://www.linkedin.com/company/maison-de-l-intelligence-artificielle"><img src="https://img.shields.io/badge/LinkedIn-163458?style=for-the-badge&logo=linkedin&logoColor=C2D4EF" alt="LinkedIn"></a>&nbsp;
+<a href="https://www.youtube.com/@maison_ia06"><img src="https://img.shields.io/badge/YouTube-994845?style=for-the-badge&logo=youtube&logoColor=FFFFFF" alt="YouTube"></a>&nbsp;
+<a href="https://www.instagram.com/maison_ia06"><img src="https://img.shields.io/badge/Instagram-AE6557?style=for-the-badge&logo=instagram&logoColor=FFFFFF" alt="Instagram"></a>&nbsp;
+<a href="https://www.tiktok.com/@maison_ia06"><img src="https://img.shields.io/badge/TikTok-163458?style=for-the-badge&logo=tiktok&logoColor=F2B2A5" alt="TikTok"></a>&nbsp;
+<a href="https://www.x.com/maison_ia"><img src="https://img.shields.io/badge/X-163458?style=for-the-badge&logo=x&logoColor=C2D4EF" alt="X"></a>&nbsp;
+<a href="https://www.facebook.com/MaisonAI"><img src="https://img.shields.io/badge/Facebook-994845?style=for-the-badge&logo=facebook&logoColor=FFFFFF" alt="Facebook"></a>
+
+<br><br>
+
+<img src="https://komarev.com/ghpvc/?username=MaisonIA06&style=for-the-badge&color=AE6557&labelColor=163458&label=VISITES" alt="Compteur de visites">
+
+<br><br>
+
+<sub>🏛️ <strong>Maison de l'IA</strong> — Département des Alpes-Maritimes · Pôle Alpha, Rue Pierre Laffitte, 06410 Biot · 04 22 21 50 42</sub>
+<br>
+<sub><em>« Seul, on va plus vite mais ensemble, on va plus loin. »</em></sub>
+
 </div>

@@ -79,4 +79,4 @@ une variante `sed 's/opacity="0"/opacity="1"/g'` (état final fidèle, animation
   un seul `<set>` au niveau du groupe, interpolation linéaire) : au-delà, le rendu sature
   le CPU sur machine modeste (constaté avec Brave/CDP le 2026-08-24).
 - `github-readme-stats.vercel.app` (officiel) est parfois en pause → miroir
-  `github-readme-stats-eight-theta.vercel.app` (vérifié le 2026-08-21).
+  `github-readme-stats-one-bice.vercel.app` (vérifié le 2026-08-24 : gère custom_title/card_width, contrairement à eight-theta).
