@@ -15,6 +15,34 @@
   <img alt="Maison de l'Intelligence Artificielle — profile.sh --live" src="https://raw.githubusercontent.com/MaisonIA06/MaisonIA06/main/assets/hero-dark.svg" width="100%">
 </picture>
 
+<!-- ═══ UPLINK · réseaux (badges d'origine) ═══ -->
+
+<div align="center">
+    <p>
+        <a href="https://www.maison-intelligence-artificielle.com">
+            <img src="https://badgen.net/badge/🏠%20Site%20Officiel/MIA/purple" alt="Site officiel">
+        </a>
+        <a href="https://www.linkedin.com/company/maison-de-l-intelligence-artificielle">
+            <img src="https://badgen.net/badge/LinkedIn/MaisonIA06/0077B5" alt="LinkedIn">
+        </a>
+        <a href="https://www.instagram.com/maison_ia06">
+            <img src="https://badgen.net/badge/Instagram/maison__ia06/E4405F" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/MaisonAI">
+            <img src="https://badgen.net/badge/Facebook/MaisonAI/1877F2" alt="Facebook">
+        </a>
+        <a href="https://www.youtube.com/@maison_ia06">
+            <img src="https://badgen.net/badge/Youtube/maison__ia06/FF0000" alt="YouTube">
+        </a>
+        <a href="https://www.x.com/maison_ia">
+            <img src="https://badgen.net/badge/X/maison__ia/000000" alt="X">
+        </a>
+        <a href="https://www.tiktok.com/@maison_ia06">
+            <img src="https://badgen.net/badge/TikTok/maison__ia06/FF0050" alt="TikTok">
+        </a>
+    </p>
+</div>
+
 <!-- ═══ TELEMETRY · série de contributions (pleine largeur) ═══ -->
 
 <div align="center">
@@ -53,19 +81,9 @@
 > ateliers et projets collaboratifs de l'équipe — et permettre aux chercheurs, étudiants
 > et curieux de forker, commenter, proposer.
 
-<!-- ═══ UPLINK · réseaux (badges aux couleurs de la charte) ═══ -->
+<!-- ═══ Pied de page ═══ -->
 
 <div align="center">
-
-<a href="https://www.maison-intelligence-artificielle.com"><img src="https://img.shields.io/badge/SITE_OFFICIEL-maison--intelligence--artificielle.com-AE6557?style=for-the-badge&labelColor=163458&logo=googlechrome&logoColor=C2D4EF" alt="Site officiel"></a>&nbsp;
-<a href="https://www.linkedin.com/company/maison-de-l-intelligence-artificielle"><img src="https://img.shields.io/badge/LinkedIn-163458?style=for-the-badge&logo=linkedin&logoColor=C2D4EF" alt="LinkedIn"></a>&nbsp;
-<a href="https://www.youtube.com/@maison_ia06"><img src="https://img.shields.io/badge/YouTube-994845?style=for-the-badge&logo=youtube&logoColor=FFFFFF" alt="YouTube"></a>&nbsp;
-<a href="https://www.instagram.com/maison_ia06"><img src="https://img.shields.io/badge/Instagram-AE6557?style=for-the-badge&logo=instagram&logoColor=FFFFFF" alt="Instagram"></a>&nbsp;
-<a href="https://www.tiktok.com/@maison_ia06"><img src="https://img.shields.io/badge/TikTok-163458?style=for-the-badge&logo=tiktok&logoColor=F2B2A5" alt="TikTok"></a>&nbsp;
-<a href="https://www.x.com/maison_ia"><img src="https://img.shields.io/badge/X-163458?style=for-the-badge&logo=x&logoColor=C2D4EF" alt="X"></a>&nbsp;
-<a href="https://www.facebook.com/MaisonAI"><img src="https://img.shields.io/badge/Facebook-994845?style=for-the-badge&logo=facebook&logoColor=FFFFFF" alt="Facebook"></a>
-
-<br><br>
 
 <img src="https://komarev.com/ghpvc/?username=MaisonIA06&style=for-the-badge&color=AE6557&labelColor=163458&label=VISITES" alt="Compteur de visites">
 
