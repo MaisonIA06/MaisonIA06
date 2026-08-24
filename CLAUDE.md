@@ -39,7 +39,16 @@ reste monospace système.
   `assets/icons/*.png` — icônes officielles (version blanche, 420 px).
 - `.github/scripts/generate_hero.py` — générateur (palette `THEMES`, lignes `INFO_LINES`,
   formes `MISSION_ICONS`/`build_shapes`, pattern `ia_pattern_def`).
-- `tests/` — tests pytest du générateur.
+- `projects.json` — liste curée des projets (ordre = ordre d'affichage ; name, repo,
+  icon (nom dans `assets/icons*/`), description, tags). Les étoiles/langages/dates sont
+  récupérés en live par le workflow.
+- `.github/scripts/charte.py` — palette partagée ; `fetch_projects.py` (fusion API GitHub)
+  et `generate_projects.py` (cartes terminal, donut langages, icônes embarquées en base64 :
+  blanches en sombre, bleues en clair via `assets/icons-bleu/`).
+- `.github/workflows/projects.yml` — quotidien + push : publie `projects.svg` /
+  `projects-light.svg` sur la branche **`projects`** (le README les référencera par
+  `raw.githubusercontent.com/MaisonIA06/MaisonIA06/projects/…`).
+- `tests/` — tests pytest des générateurs (héros + projets).
 - `.github/workflows/ci.yml` — pytest + génération à blanc à chaque push.
 
 ## Commandes
@@ -52,9 +61,14 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
   --font "/home/mia/Documents/Charte Graphique/POGONIA/POGONIA/Pogonia-Black.otf"
 ```
 
+# panneau projets en local (token pour éviter le rate-limit anonyme)
+GITHUB_TOKEN=$(gh auth token) .venv/bin/python .github/scripts/fetch_projects.py
+.venv/bin/python .github/scripts/generate_projects.py merged.json /tmp/out
+
 Prévisualiser un SVG **en document** (`http://127.0.0.1:8765/hero-dark.svg` via
 `python3 -m http.server`) : les captures Chrome/CDP d'un SVG dans `<img>` sont figées
-à t=0, même si GitHub l'anime bien en navigation réelle.
+à t=0, même si GitHub l'anime bien en navigation réelle. Sans navigateur : `resvg` sur
+une variante `sed 's/opacity="0"/opacity="1"/g'` (état final fidèle, animations = apparitions).
 
 ## Contraintes GitHub README
 

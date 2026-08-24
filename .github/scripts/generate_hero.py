@@ -26,15 +26,11 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
-# ──────────────────────────── palette officielle (charte 2026) ────────────────────────────
-DEEP_BLUE, BLEU_QUANTIQUE, BLEU_LUMEN = "#163458", "#98A8C6", "#C2D4EF"
-ROUGE_LOVELACE, TERRA, AURIA = "#994845", "#AE6557", "#F2B2A5"
-MATIERE_GRISE, DATA_BLOOM, NEURA_VERDE = "#C0C0BE", "#E5EAA8", "#F1F4D0"
-WHITE = "#FFFFFF"
-# teintes de profondeur du Deep Blue (fenêtre / panneaux), issues de la même dominante
-DEEP_BLUE_2, DEEP_BLUE_3 = "#112B4B", "#0E2440"
-CHARTE_COLORS = {DEEP_BLUE, BLEU_QUANTIQUE, BLEU_LUMEN, ROUGE_LOVELACE, TERRA, AURIA,
-                 MATIERE_GRISE, DATA_BLOOM, NEURA_VERDE, WHITE, DEEP_BLUE_2, DEEP_BLUE_3}
+# palette officielle (charte 2026) — module partagé charte.py
+from charte import (  # noqa: F401
+    DEEP_BLUE, BLEU_QUANTIQUE, BLEU_LUMEN, ROUGE_LOVELACE, TERRA, AURIA,
+    MATIERE_GRISE, DATA_BLOOM, NEURA_VERDE, WHITE, DEEP_BLUE_2, DEEP_BLUE_3, CHARTE_COLORS,
+)
 
 THEMES = {
     "dark": {
